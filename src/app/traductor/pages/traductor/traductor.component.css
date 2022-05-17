@@ -1,0 +1,10 @@
+.container-text-area {
+  position: relative;
+}
+
+.icon-svg {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  opacity: 35%;
+}

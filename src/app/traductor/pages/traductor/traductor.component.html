@@ -8,8 +8,24 @@
       <div class="col col-lg-6">
 
         <!-- START BUTTONS  -->
-        <div class="row row-cols-2 row-cols-md-4 mb-2" role="group" aria-label="">
-          <button type="button" class="btn col">
+        <div class="row row-cols-2 row-cols-md-4 mb-2"
+          role="group" aria-label="">
+
+          <button
+            type="button"
+            class="btn col"
+            *ngFor="let item of languages"
+            (click)="activeLanguageSource(item.language)"
+            [ngClass]="getClassCssSource(item.language)">
+            <div class="btn-primary ">
+              <img src="./assets/images/{{item.img}}"
+                width="25" alt="Bandera de {{item.name}}">
+              {{item.name | titlecase}}
+            </div>
+          </button>
+
+          <!-- * ☝ -->
+          <!-- <button type="button" class="btn col">
             <div class="btn-primary ">
               <img src="./assets/images/svg-country/it.svg" width="25" alt="Bandera de Italia">
               Italiano
@@ -35,14 +51,18 @@
               <img src="./assets/images/svg-country/es.svg" width="25" alt="Bandera de España">
               Español
             </div>
-          </button>
+          </button>-->
         </div>
         <!-- END BUTTONS  -->
 
         <!-- START TEXT-AREA -->
         <div class="mb-3 container-text-area">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            placeholder="Estoy traduciendo este texto con esta maravillossa app!"></textarea>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1" rows="5"
+            placeholder="Estoy traduciendo este texto con esta maravillossa app!"
+            [(ngModel)]="text">
+          </textarea>
           <div class="icon-svg">
             <button class="btn px-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 384 512">
@@ -56,7 +76,21 @@
 
         <!-- START BUTTONS  -->
         <div class="row row-cols-2 row-cols-md-4" role="group" aria-label="">
-          <button type="button" class="btn col">
+
+          <button
+            type="button"
+            class="btn col"
+            *ngFor="let item of languages"
+            (click)="activeLanguageTarget(item.language)"
+            [ngClass]="getClassCSSTarget(item.language)">
+            <div class="btn-primary ">
+              <img src="./assets/images/{{item.img}}"
+                width="25" alt="Bandera de {{item.name}}">
+              {{item.name | titlecase }}
+            </div>
+          </button>
+
+          <!-- <button type="button" class="btn col">
             <div class="btn-primary ">
               <img src="./assets/images/svg-country/it.svg" width="25" alt="Bandera de Italia">
               Italiano
@@ -82,20 +116,28 @@
               <img src="./assets/images/svg-country/es.svg" width="25" alt="Bandera de España">
               Español
             </div>
-          </button>
+          </button> -->
         </div>
         <!-- END BUTTONS  -->
 
         <!-- START BUTTON LARGE -->
         <div class="d-grid mt-1">
-          <button class="btn btn-primary text-uppercase" type="button">Traducir</button>
+          <button
+            class="btn btn-primary text-uppercase"
+            type="button"
+            (click)="traducirText()">
+            Traducir
+          </button>
         </div>
         <!-- END BUTTON LARGE -->
 
         <!-- START TEXT-AREA -->
         <div class="mb-3 mt-2 container-text-area">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            placeholder="I am translating this text with this wonderful app!"></textarea>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="5"
+            placeholder="I am translating this text with this wonderful app!">{{textoTraducido}}</textarea>
           <div class="icon-svg">
             <button class="btn px-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512">

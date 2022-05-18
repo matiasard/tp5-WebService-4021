@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TraductorComponent } from './pages/traductor/traductor.component';
 import { FormsModule } from '@angular/forms';
+
+import { TraductorComponent } from './pages/traductor/traductor.component';
 
 @NgModule({
   declarations: [TraductorComponent],

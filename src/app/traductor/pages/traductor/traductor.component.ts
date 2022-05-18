@@ -8,9 +8,9 @@ import { TraductorService } from '../../services/traductor.service';
   styleUrls: ['./traductor.component.css'],
 })
 export class TraductorComponent implements OnInit {
-  source!: string;
-  target!: string;
-  text!: string;
+  source: string = '';
+  target: string = '';
+  text: string = '';
   textoTraducido: string = '';
 
   languages: Languages[] = [
@@ -59,7 +59,7 @@ export class TraductorComponent implements OnInit {
 
   // traducirText(source: string, target: string, text: string) {
   traducirText() {
-    if (this.text.length == 0) {
+    if (this.text.length == 0 || this.target == '' || this.source == '') {
       return;
     }
     this.traductorService

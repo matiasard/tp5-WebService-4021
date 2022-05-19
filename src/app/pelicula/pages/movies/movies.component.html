@@ -8,6 +8,17 @@
     <!-- START COL CARD -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
+      <div *ngFor="let movie of movies"
+        class="me-auto ms-auto col-10">
+        <div class="card img-fluid">
+          <img src="./assets/images/movies-portadas/ready-player-one-online.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text text-hidden">{{ movie.imdb_id }}</p>
+          </div>
+        </div>
+      </div>
+      <!--
       <div class="me-auto ms-auto col-10">
         <div class="card img-fluid">
           <img src="./assets/images/movies-portadas/ready-player-one-online.jpg" class="card-img-top" alt="...">
@@ -176,7 +187,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
     <!-- END COL CARD -->

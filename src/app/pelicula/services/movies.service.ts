@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MovieDetail } from '../interfaces/movieDetail.interface';
+import { Pelicula } from '../interfaces/movies.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoviesService {
-  private url: string =
-    'https://moviesminidatabase.p.rapidapi.com/movie/byYear/2021/';
+  private url: string = 'https://moviesminidatabase.p.rapidapi.com/movie';
 
   private get getHttpHeaders() {
     return {
@@ -20,23 +21,22 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  public moviesByYear(): Observable<any> {
+  public moviesByYear(): Observable<Pelicula> {
+    const apiUrl = `${this.url}/byYear/2021/`;
     const header = new HttpHeaders({
       'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com',
       'X-RapidAPI-Key': '2272da370bmsh959fdd726380f99p1b51d0jsnd82d9badb07c',
     });
-    const params = new HttpParams().set('page_size', '10').set('page', '1');
-    return this.http.get<any>(this.url, { headers: header, params: params });
+    const params = new HttpParams().set('page_size', '12').set('page', '1');
+    return this.http.get<Pelicula>(apiUrl, {
+      headers: header,
+      params: params,
+    });
   }
 
-  // (this.url, {
-  //   headers:header,
-  //   params: params,
-  // })
-  // public traducirTexto(): Observable<any> {
-  //   const body = new HttpParams()
-  //     .set('q', 'text')
-  //     .set('target', 'target')
-  //   return this.http.get<any>(this.url, this.getHttpHeaders, body);
-  // }
+  //TODO: [Terminado] Hacer la funcion buscar por ID para juntar con el metodo moviesByYear para buscar las imagenes y detalles
+  public moviesById(id: string): Observable<MovieDetail> {
+    const apiUrl = `https://moviesminidatabase.p.rapidapi.com/movie/id/${id}/`;
+    return this.http.get<MovieDetail>(apiUrl, this.getHttpHeaders);
+  }
 }

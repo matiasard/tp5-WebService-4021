@@ -57,7 +57,6 @@ export class TraductorComponent implements OnInit {
     this.target = selectedTarget;
   }
 
-  // traducirText(source: string, target: string, text: string) {
   traducirText() {
     if (this.text.length == 0 || this.target == '' || this.source == '') {
       return;

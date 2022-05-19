@@ -7,6 +7,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { TraductorModule } from './traductor/traductor.module';
+import { PeliculaModule } from './pelicula/pelicula.module';
+// import { MoviesComponent } from './pelicula/pages/movies/movies.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +17,7 @@ import { TraductorModule } from './traductor/traductor.module';
     AppRoutingModule,
     HttpClientModule,
     TraductorModule,
+    PeliculaModule,
     SharedModule,
   ],
   providers: [],

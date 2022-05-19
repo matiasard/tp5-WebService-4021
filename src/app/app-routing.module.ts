@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MoviesComponent } from './pelicula/pages/movies/movies.component';
 
 import { TraductorComponent } from './traductor/pages/traductor/traductor.component';
 
@@ -13,10 +14,10 @@ const routes: Routes = [
     path: 'traductor',
     component: TraductorComponent,
   },
-  // {
-  //   path: 'region',
-  //   component: PorRegionComponent,
-  // },
+  {
+    path: 'peliculas',
+    component: MoviesComponent,
+  },
   // {
   //   path: 'pais/:id',
   //   component: VerPaisComponent,

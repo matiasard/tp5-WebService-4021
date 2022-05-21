@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { TraductorModule } from './traductor/traductor.module';
 import { PeliculaModule } from './pelicula/pelicula.module';
+import { DivisasModule } from './divisas/divisas.module';
 // import { MoviesComponent } from './pelicula/pages/movies/movies.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PeliculaModule } from './pelicula/pelicula.module';
     TraductorModule,
     PeliculaModule,
     SharedModule,
+    DivisasModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

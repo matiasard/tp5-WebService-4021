@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ConversorDivisasComponent } from './divisas/pages/conversor-divisas/conversor-divisas.component';
 import { MoviesComponent } from './pelicula/pages/movies/movies.component';
 
 import { TraductorComponent } from './traductor/pages/traductor/traductor.component';
@@ -18,10 +19,10 @@ const routes: Routes = [
     path: 'peliculas',
     component: MoviesComponent,
   },
-  // {
-  //   path: 'pais/:id',
-  //   component: VerPaisComponent,
-  // },
+  {
+    path: 'convertidor',
+    component: ConversorDivisasComponent,
+  },
   {
     path: '**',
     redirectTo: '',

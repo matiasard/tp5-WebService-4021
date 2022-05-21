@@ -1,0 +1,185 @@
+<!-- START CONTENT -->
+<main class="container mt-5">
+
+  <section class="row">
+
+    <!-- START TABLE -->
+    <div class="table-responsive d-none d-md-block col-md-8">
+      <div class="bg-info text-center text-light pt-2 pb-2">
+        <h1>Conversor de Divisas</h1>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+              <div class="">
+                <img src="./assets/images/svg-country/us.svg" height="47" width="60" alt="US">
+                <span class="d-block ms-3">USD</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="">
+                <img src="./assets/images/svg-country/eu.svg" alt="Euro" height="47" width="60" />
+                <span class="d-block ms-3">EUR</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="">
+                <img src="./assets/images/svg-country/gb.svg" height="47" width="60" alt="GBP">
+                <span class="d-block ms-3">GBP</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="fw-bold">
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center justify-content-center">
+                <img src="./assets/images/svg-country/us.svg" height="47" width="60" alt="US">
+                <div class="ms-3">
+                  <span><span class="me-2">1</span> USD</span>
+                  <br>
+                  <span>Inverse</span>
+                </div>
+              </div>
+            </th>
+            <td>
+              <span>1.000000</span>
+              <br>
+              <span>1.000000</span>
+            </td>
+
+            <td class="text-primary">
+              <span>0.919901</span>
+              <br>
+              <span>1.087074</span>
+            </td>
+            <td class="text-primary">
+              <span>0.811469</span>
+              <br>
+              <span>1.232332</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center">
+                <img src="./assets/images/svg-country/eu.svg" alt="Euro" height="47" width="60" />
+                <div class="ms-3">
+                  <span><span class="me-2">1</span> EUR</span>
+                  <br>
+                  <span>Inverse</span>
+                </div>
+              </div>
+            </th>
+            <td class="text-primary">
+              <span>1.087074</span>
+              <br>
+              <span>0.919901</span>
+            </td>
+
+            <td>
+              <span>1.000000</span>
+              <br>
+              <span>1.000000</span>
+            </td>
+            <td class="text-primary">
+              <span>0.811469</span>
+              <br>
+              <span>1.232332</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center">
+                <img src="./assets/images/svg-country/gb.svg" height="47" width="60" alt="GBP">
+                <div class="ms-3">
+                  <span><span class="me-2">1</span> GBP</span>
+                  <br>
+                  <span>Inverse</span>
+                </div>
+              </div>
+            </th>
+            <td class="text-primary">
+              <span>1.232332</span>
+              <br>
+              <span>0.811469</span>
+            </td>
+
+            <td class="text-primary">
+              <span>1.133623</span>
+              <br>
+              <span>0.882127</span>
+            </td>
+            <td>
+              <span>1.000000</span>
+              <br>
+              <span>1.000000</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END TABLE -->
+
+    <!-- START FORM -->
+    <div class="col-sm-12 col-md-4">
+
+      <form class="row g-3 py-4 bg-primary text-light" autocomplete="off">
+        <!-- (ngSubmit)="convertirMoneda()" -->
+        <p class="h3 mt-0">Conversor de Divisas</p>
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label">Cantidad</label>
+          <input type="number" class="form-control" id="inputEmail4" placeholder="Cantidad"
+            name="valor" [(ngModel)]="valor">
+        </div>
+
+        <div class="col-md-12">
+          <label for="inputState" class="form-label">De</label>
+          <select
+            id="inputState"
+            class="form-select"
+            name="fromType" [(ngModel)]="fromType">
+            <option
+              *ngFor="let c of monedas">
+              {{c}}
+            </option>
+            <!-- <option selected disabled>USD Dólares EEUU</option>
+            <option>EUR</option>
+            <option>GBP</option> -->
+          </select>
+        </div>
+
+        <div class="col-md-12">
+          <label for="inputState" class="form-label">A</label>
+          <select id="inputState" class="form-select"
+            name="toType" [(ngModel)]="toType">
+            <option
+              *ngFor="let c of monedas">
+              {{c}}
+            </option>
+            <!--
+            <option selected disabled>ARS Pesos Argetinos</option>
+            <option>USD</option>
+            <option>EUR</option>
+            <option>GBP</option> -->
+          </select>
+        </div>
+
+        <!-- <div class="col-12">
+          <input type="text" class="form-control" id="">
+        </div> -->
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-warning w-100"
+            (click)="convertirMoneda()">Convertir</button>
+        </div>
+      </form>
+    </div>
+    <!-- END FORM -->
+
+  </section>
+
+</main>
+<!-- END CONTENT -->

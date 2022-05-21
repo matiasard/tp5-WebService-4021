@@ -11,6 +11,7 @@ export class ConversorDivisasComponent implements OnInit {
   fromType: string = 'ARS';
   toType: string = 'USD';
   monedas: string[] = ['asd', 'asdd'];
+  monedasList: string[] = [];
 
   constructor(private conversorService: ConversorDivisasService) {}
 
@@ -23,5 +24,11 @@ export class ConversorDivisasComponent implements OnInit {
     //   .subscribe((resp) => {
     //     console.log(resp);
     //   });
+    this.conversorService.getCurrencyList().subscribe((codes) => {
+      //* Obteniendo solo los VALORES del Objeto (NO la Key)
+      const values: string[] = Object.values(codes.response.fiats);
+      this.monedasList = values;
+      console.log(this.monedasList);
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExchangeRate } from '../../interfaces/exchangeRates.interfaces';
+import { ExchangeRate, Rate } from '../../interfaces/exchangeRates.interfaces';
 import { ConversorDivisasService } from '../../services/conversor-divisas.service';
 
 @Component({
@@ -8,16 +8,19 @@ import { ConversorDivisasService } from '../../services/conversor-divisas.servic
   styleUrls: ['./conversor-divisas.component.css'],
 })
 export class ConversorDivisasComponent implements OnInit {
+  // Data Convert
   valor!: number;
   fromType: string = '';
   toType: string = '';
   monedasList: any[] = [];
   changeResult!: string;
-  usd: any[] = [];
-  eur: any[] = [];
-  gbp: any[] = [];
 
-  monedasArr: ExchangeRate[] = [];
+  // Data Table
+  usd: Rate = {};
+  eur: Rate = {};
+  gbp: Rate = {};
+
+  time_last_update!: Date;
   monedas: string[] = ['USD', 'EUR', 'GBP'];
 
   constructor(private conversorService: ConversorDivisasService) {}
@@ -29,6 +32,7 @@ export class ConversorDivisasComponent implements OnInit {
         //* Obteniendo solo los VALORES del Objeto (NO la Key)
         const values: any[] = Object.values(codes.response.fiats);
         values.splice(-20, 16);
+
         this.monedasList = values;
         console.log(this.monedasList);
       },
@@ -44,9 +48,20 @@ export class ConversorDivisasComponent implements OnInit {
       console.log(mon);
       this.conversorService.getCurrencyTable(mon).subscribe(
         (resp) => {
-          // console.log(resp);
-          this.monedasArr.push(resp);
-          console.log(this.monedasArr);
+          console.log(resp);
+          this.time_last_update = new Date(resp.time_last_update_utc);
+          if (resp.base_code == 'USD') {
+            this.usd = resp.rates;
+            // console.log(this.usd);
+          }
+          if (resp.base_code == 'GBP') {
+            this.gbp = resp.rates;
+            // console.log(this.gbp);
+          }
+          if (resp.base_code == 'EUR') {
+            this.eur = resp.rates;
+            // console.log(this.eur);
+          }
         },
         (error) => {
           console.log('Error en el Servidor');
@@ -55,6 +70,7 @@ export class ConversorDivisasComponent implements OnInit {
     }
   }
 
+  //* Conversor de Moneda
   convertirMoneda() {
     console.log(this.valor, this.fromType, this.toType);
     if (

@@ -9,5 +9,9 @@ export interface ExchangeRate {
   time_next_update_utc: string;
   time_eol_unix: number;
   base_code: string;
-  rates: { [key: string]: number };
+  rates: Rate;
+}
+
+export interface Rate {
+  [index: string]: string;
 }

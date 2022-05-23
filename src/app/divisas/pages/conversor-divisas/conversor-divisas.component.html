@@ -12,22 +12,28 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col ">
+              <div class="text-center">
+                Actualizacion:
+                <br>
+                {{time_last_update | date }}
+              </div>
+            </th>
             <th scope="col">
               <div class="">
-                <img src="./assets/images/svg-country/us.svg" height="47" width="60" alt="US">
+                <img src="./assets/images/svg-country/USD.svg" height="47" width="60" alt="US">
                 <span class="d-block ms-3">USD</span>
               </div>
             </th>
             <th scope="col">
               <div class="">
-                <img src="./assets/images/svg-country/eu.svg" alt="Euro" height="47" width="60" />
+                <img src="./assets/images/svg-country/EUR.svg" alt="Euro" height="47" width="60" />
                 <span class="d-block ms-3">EUR</span>
               </div>
             </th>
             <th scope="col">
               <div class="">
-                <img src="./assets/images/svg-country/gb.svg" height="47" width="60" alt="GBP">
+                <img src="./assets/images/svg-country/GBP.svg" height="47" width="60" alt="GBP">
                 <span class="d-block ms-3">GBP</span>
               </div>
             </th>
@@ -46,20 +52,19 @@
               </div>
             </th>
             <td>
-              <span>1.000000</span>
+              <span>{{usd['USD'] | number:'1.4-4'}}</span>
               <br>
-              <span>1.000000</span>
-            </td>
-
-            <td class="text-primary">
-              <span>0.919901</span>
-              <br>
-              <span>1.087074</span>
+              <span>{{usd['USD'] | number:'1.4-4'}}</span>
             </td>
             <td class="text-primary">
-              <span>0.811469</span>
+              <span>{{usd['EUR'] | number:'1.4-4'}}</span>
               <br>
-              <span>1.232332</span>
+              <span>{{eur['USD'] | number:'1.4-4'}}</span>
+            </td>
+            <td class="text-primary">
+              <span>{{usd['GBP'] | number:'1.4-4'}}</span>
+              <br>
+              <span>{{gbp['USD'] | number:'1.4-4'}}</span>
             </td>
           </tr>
           <tr>
@@ -74,20 +79,20 @@
               </div>
             </th>
             <td class="text-primary">
-              <span>1.087074</span>
+              <span>{{eur['USD'] | number:'1.4-4'}}</span>
               <br>
-              <span>0.919901</span>
+              <span>{{usd['EUR'] | number:'1.4-4'}}</span>
             </td>
 
             <td>
-              <span>1.000000</span>
+              <span>{{eur['EUR'] | number:'1.4-4'}}</span>
               <br>
-              <span>1.000000</span>
+              <span>{{eur['EUR'] | number:'1.4-4'}}</span>
             </td>
             <td class="text-primary">
-              <span>0.811469</span>
+              <span>{{usd['GBP'] | number:'1.4-4'}}</span>
               <br>
-              <span>1.232332</span>
+              <span>{{gbp['EUR'] | number:'1.4-4'}}</span>
             </td>
           </tr>
           <tr>
@@ -102,20 +107,20 @@
               </div>
             </th>
             <td class="text-primary">
-              <span>1.087074</span>
+              <span>{{gbp['USD'] | number:'1.4-4'}}</span>
               <br>
-              <span>0.919901</span>
+              <span>{{usd['GBP'] | number:'1.4-4'}}</span>
             </td>
 
-            <td>
-              <span>1.000000</span>
-              <br>
-              <span>1.000000</span>
-            </td>
             <td class="text-primary">
-              <span>0.811469</span>
+              <span>{{gbp['EUR'] | number:'1.4-4'}}</span>
               <br>
-              <span>1.232332</span>
+              <span>{{eur['GBP'] | number:'1.4-4'}}</span>
+            </td>
+            <td>
+              <span>{{gbp['GBP'] | number:'1.4-4'}}</span>
+              <br>
+              <span>{{gbp['GBP'] | number:'1.4-4'}}</span>
             </td>
           </tr>
 
@@ -207,9 +212,13 @@
             (click)="convertirMoneda()">Convertir</button>
         </div>
 
-        <div class="col-12 mt-2 text-center"
-          *ngIf="changeResult">
-          <p class="h3 fw-bold">RESULT: {{ changeResult | number }} </p>
+        <div class="col-12 mt-3 text-center">
+          <div class="bg-white p-1 rounded">
+            <p class="m-0 h3 text-dark fw-bold">
+              RESULT: {{ changeResult | number }}
+              <span *ngIf="changeResult == ''">Sin resultado...</span>
+            </p>
+          </div>
         </div>
       </form>
     </div>
@@ -217,8 +226,5 @@
 
   </section>
 
-  <p>
-    {{usd}}
-  </p>
 </main>
 <!-- END CONTENT -->

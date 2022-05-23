@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ExchangeRate } from '../interfaces/exchangeRates.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -45,12 +46,23 @@ export class ConversorDivisasService {
     'JOD',
     'KES',
     'KRW',
+    'USD',
+    'EUR',
+    'GBP',
+    'JPY',
+    'MXV',
+    'NZD',
   ];
+  get getReplacementCurrencyCode() {
+    return [...this.replacementCurrencyCode];
+  }
 
   private urlConvert: string =
     'https://community-neutrino-currency-conversion.p.rapidapi.com/convert';
 
-  private urlCurrentCodes = 'https://currencyscoop.p.rapidapi.com/currencies';
+  private urlCurrencyCodes = 'https://currencyscoop.p.rapidapi.com/currencies';
+  private urlExchangeRate =
+    'https://exchangerate-api.p.rapidapi.com/rapid/latest';
 
   //* INJECTIONS
   constructor(private http: HttpClient) {}
@@ -86,6 +98,19 @@ export class ConversorDivisasService {
         'X-RapidAPI-Key': '2272da370bmsh959fdd726380f99p1b51d0jsnd82d9badb07c',
       }),
     };
-    return this.http.get<any>(this.urlCurrentCodes, httpOptions);
+    return this.http.get<any>(this.urlCurrencyCodes, httpOptions);
+  }
+
+  //? Lista de divisas TABLA
+  getCurrencyTable(code: string): Observable<ExchangeRate> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-RapidAPI-Host': 'exchangerate-api.p.rapidapi.com',
+        'X-RapidAPI-Key': '2272da370bmsh959fdd726380f99p1b51d0jsnd82d9badb07c',
+      }),
+    };
+    const urlCurrencyCode = `${this.urlExchangeRate}/${code}`;
+
+    return this.http.get<ExchangeRate>(urlCurrencyCode, httpOptions);
   }
 }

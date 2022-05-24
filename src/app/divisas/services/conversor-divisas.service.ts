@@ -83,11 +83,11 @@ export class ConversorDivisasService {
         'X-RapidAPI-Key': '2272da370bmsh959fdd726380f99p1b51d0jsnd82d9badb07c',
       }),
     };
-    const params = new HttpParams()
+    const body = new HttpParams()
       .set('from-value', `${valor}`)
       .set('from-type', `${fromType}`)
       .set('to-type', `${toType}`);
-    return this.http.post<any>(this.urlConvert, params, httpOptions);
+    return this.http.post<any>(this.urlConvert, body, httpOptions);
   }
 
   //? Lista de codigos internacionales de monedas

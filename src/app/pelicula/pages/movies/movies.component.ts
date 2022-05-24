@@ -11,7 +11,6 @@ import { MoviesService } from '../../services/movies.service';
 export class MoviesComponent implements OnInit {
   movies: Pelicula['results'] = [];
   moviesId: string[] = [];
-  movieDetail!: MovieDetail;
   movieDetails: MovieDetail[] = [];
   constructor(private moviesService: MoviesService) {}
 
@@ -21,16 +20,11 @@ export class MoviesComponent implements OnInit {
       console.log(resp);
       this.movies = resp.results;
       this.moviesId = this.movies.map((element) => element.imdb_id);
-      // console.log(this.moviesId);
 
       //TODO: [Terminado] Hacer la funcion buscar por ID para juntar con el metodo moviesByYear y obtener las imagenes
-      for (let index = 0; index < this.moviesId.length; index++) {
-        const element = this.moviesId[index];
-        // console.log(element);
-        this.moviesService.moviesById(element).subscribe((respDetail) => {
-          this.movieDetail = respDetail;
-          this.movieDetails.push(this.movieDetail);
-          // console.log(this.movieDetail);
+      for (const elem of this.moviesId) {
+        this.moviesService.moviesById(elem).subscribe((respDetail) => {
+          this.movieDetails.push(respDetail);
         });
       }
       console.log(this.movieDetails);

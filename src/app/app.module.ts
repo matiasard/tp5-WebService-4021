@@ -9,11 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { TraductorModule } from './traductor/traductor.module';
 import { PeliculaModule } from './pelicula/pelicula.module';
 import { DivisasModule } from './divisas/divisas.module';
-import { GeneradorQrComponent } from './generadorQr/pages/generador-qr/generador-qr.component';
-// import { MoviesComponent } from './pelicula/pages/movies/movies.component';
+import { GeneradorQrModule } from './generadorQr/generador-qr.module';
 
 @NgModule({
-  declarations: [AppComponent, GeneradorQrComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +21,7 @@ import { GeneradorQrComponent } from './generadorQr/pages/generador-qr/generador
     PeliculaModule,
     SharedModule,
     DivisasModule,
+    GeneradorQrModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

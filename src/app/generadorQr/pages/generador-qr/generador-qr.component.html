@@ -1,10 +1,16 @@
-<form>
-  <label for="url" class="form-label">Ingrese la URL</label>
-  <!-- <input type="text" class="form-control" name="url" [(ngModel)]="url" /> -->
-  <br>
-  <button (click)="qrGenerador2()" class="btn btn-primary">Enviar</button>
-</form>
+<div class="row my-4">
+  <div class="d-flex justify-content-center">
+    <form class="col-6 mb-4" autocomplete="off">
+      <label for="url" class="form-label">Ingrese la URL</label>
+      <input type="text" class="form-control" name="url" [(ngModel)]="url" />
+      <br>
+      <button (click)="qrGenerador2()" class="btn btn-primary btn-lg">Enviar</button>
+    </form>
 
-
-<br />
-<img #asImg src="data:image/;base64," alt="qr Generado2" />
+  </div>
+  <div class="d-flex justify-content-center"
+    *ngIf="img2">
+    <img #asImg src=" data:image/;base64," alt="qr Generado2"
+      class="img-responsive" />
+  </div>
+</div>

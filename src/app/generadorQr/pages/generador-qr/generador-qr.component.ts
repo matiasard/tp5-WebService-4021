@@ -12,7 +12,7 @@ import { GeneradorQrService } from '../../services/generador-qr.service';
   styleUrls: ['./generador-qr.component.css'],
 })
 export class GeneradorQrComponent implements OnInit {
-  url: string = '';
+  url!: string;
   img2!: any;
   ngOnInit(): void {}
 

@@ -9,10 +9,11 @@ import { SharedModule } from './shared/shared.module';
 import { TraductorModule } from './traductor/traductor.module';
 import { PeliculaModule } from './pelicula/pelicula.module';
 import { DivisasModule } from './divisas/divisas.module';
+import { GeneradorQrComponent } from './generadorQr/pages/generador-qr/generador-qr.component';
 // import { MoviesComponent } from './pelicula/pages/movies/movies.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, GeneradorQrComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
